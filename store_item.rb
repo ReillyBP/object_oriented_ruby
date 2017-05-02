@@ -11,7 +11,6 @@ foodstuffs1 = {name: 'kiwis', color: 'brown', price: 3}
 foodstuffs2 = {name: 'starfruits', color:'yellow', price: 5} 
 foodstuffs3 = {name: 'persimmons', color: 'orange', price: 2} 
 
-
 class Food
   attr_reader :color
   attr_writer :name
@@ -20,6 +19,7 @@ class Food
     @name = input_hash[:name]
     @color = input_hash[:color]
     @price = input_hash[:price]
+ 
   end
 
   def color
@@ -30,13 +30,20 @@ class Food
     @name
   end
 
-def info
-  return puts "At my store, #{@name} are a wonderful shade of #{@color} and only cost $#{@price} USD!"
+  def info
+    return puts "At my store, #{@name} are a wonderful shade of #{@color} and only cost $#{@price} USD!"
+  end
+end
+
+class Foodiez < Food
+  attr_reader :shelf_life
+  def initialize(input_hash)
+    @shelf_life = input_hash[:shelf_life]
   end
 end
 
 
-foodstuffs1 = Food.new(name: "kiwis", color: "brown", price: 3)
+foodstuffs1 = Foodiez.new(name: "kiwis", color: "brown", price: 3, shelf_life: 12)
 foodstuffs2 = Food.new(name: "starfruits", color: "yellow", price: 5)
 foodstuffs3 = Food.new(name: "persimmons", color: "orange", price: 2)
 
@@ -50,6 +57,7 @@ puts foodstuffs3.info
 
  puts foodstuffs1.name = "Cherries"
 
+p foodstuffs1.shelf_life
 
 
 
